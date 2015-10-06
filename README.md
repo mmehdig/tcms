@@ -8,7 +8,7 @@ This is a simulator of an imaginary coffee machine with web API service. This ma
 The current version of coffee machine understands two features for coffee: density and size. 
 
 # How
-The state of this coffee machine is stored in `coffee_machine.json` and all of it's funcitonality are implemented in `model.py`. The `run.py` will fire the web interface and all web services. 
+The state of this coffee machine is stored in `coffee_machine.json` and all of it's funcitonality are implemented in as `CoffeeMachine` class in `models.py`. The `run.py` will fire the web interface and all web services. 
 
 # API
 
