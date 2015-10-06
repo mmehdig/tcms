@@ -1,0 +1,3 @@
+{% for key in attributes %}
+<a onclick="update_attribute('{{ key }}');"><img src="{{ url_for('static', filename='cm_%s_%s.jpg' % (key, attributes[key]) ) }}" /></a>
+{% endfor %}
