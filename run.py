@@ -43,7 +43,7 @@ def update(size, density):
 @app.route("/cm/click/size")
 def click_size():
     # send message to DM: user asked for next size!
-    return coffee_machine()
+    return next_size()
 
 @app.route("/cm/size")
 def next_size():
@@ -56,7 +56,7 @@ def next_size():
 @app.route("/cm/click/density")
 def click_density():
     # send message to DM: user asked for next density!
-    return coffee_machine()
+    return next_density()
 
 
 @app.route("/cm/density")
