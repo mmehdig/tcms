@@ -4,16 +4,15 @@
     <title>
         Coffee Machine
     </title>
-    <style type="text/css">
-        #interface a:hover { cursor: pointer; }
-	#interface img { width: 35% }
-        #log { color: #777; font-family: courier; font-size: 0.6em; white-space: pre; }
-	body { background: #000; padding: 0; margin: 0; width: 100%;}
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='coffee-machine.png') }}">
 </head>
 <body>
-<div id="interface"></div>
-<div id="log"></div>
+    <div id="coffee-machine">
+        <h4>Coffee Machine Simulator</h4>
+        <div id="interface"></div>
+    </div>
+    <div id="log"></div>
 <script>
     function loadInterface() {
         var xhttp = new XMLHttpRequest();
@@ -34,7 +33,7 @@
 	    if (xhttp.readyState == 4 && xhttp.status == 200) {
                 document.getElementById("log").innerHTML += "\n"+xhttp.responseText;
             };
-	};
+	    };
         xhttp.open("GET", "/cm/click/" + key, true);
         xhttp.send();
 

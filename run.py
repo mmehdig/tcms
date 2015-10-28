@@ -22,7 +22,12 @@ def index():
 
 @app.route("/cm/interface")
 def interface():
-    return render_template('interface.html', attributes=cm.get_attr())
+    if cm.status == "ready":
+        return render_template('interface.html', attributes=cm.get_attr())
+    elif cm.status == "serve":
+        return render_template('coffee.html', attributes=cm.get_attr())
+    else:
+        return render_template('machine.html', attributes=cm.get_attr())
 
 
 @app.route("/cm")
@@ -73,10 +78,16 @@ def reset():
     return coffee_machine()
 
 
+@app.route("/cm/turn_on")
+def turn_on():
+    cm.turn_on()
+    return coffee_machine()
+
+
 @app.route("/cm/serve")
 def serve():
     # serve the coffee?
-    cm.reset()
+    cm.serve()
     return coffee_machine()
 
 

@@ -4,10 +4,12 @@ class CoffeeMachine:
         self._valid_density = [1, 2, 3]
         self.size = 0
         self.density = 0
+        self.status = 0
 
         if config is not None:
             self.set_size(config['size'])
             self.set_density(config['density'])
+            self.status = config['status']
 
         # clear the message
         self.message = ""
@@ -64,4 +66,18 @@ class CoffeeMachine:
     def reset(self):
         self.size = 0
         self.density = 0
+        self.status = "off"
+        self.message = ""
+
+    def turn_on(self):
+        if self.status != "ready":
+            self.size = 0
+            self.density = 0
+            self.status = "ready"
+            self.message = ""
+
+    def serve(self):
+        self.size = 0
+        self.density = 0
+        self.status = "serve"
         self.message = ""
