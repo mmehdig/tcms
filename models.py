@@ -4,7 +4,7 @@ class CoffeeMachine:
         self._valid_density = [1, 2, 3]
         self.size = 0
         self.density = 0
-        self.status = 0
+        self.status = "standby"
 
         if config is not None:
             self.set_size(config['size'])
@@ -15,6 +15,11 @@ class CoffeeMachine:
         self.message = ""
 
     def set_size(self, size):
+        if self.status != "ready":
+            self.message = "Err! the machine is not ready!"
+            # error code for invalid size
+            return 1
+
         size = int(size)
 
         if size in self._valid_size:
@@ -27,6 +32,11 @@ class CoffeeMachine:
             return 1
 
     def set_density(self, density):
+        if self.status != "ready":
+            self.message = "Err! the machine is not ready!"
+            # error code for invalid size
+            return 1
+
         density = int(density)
 
         if density in self._valid_density:
@@ -63,10 +73,13 @@ class CoffeeMachine:
     def get_attr(self):
         return {"size": self.size, "density": self.density}
 
+    def get_status(self):
+        return self.status
+
     def reset(self):
         self.size = 0
         self.density = 0
-        self.status = "off"
+        self.status = "standby"
         self.message = ""
 
     def turn_on(self):
@@ -77,7 +90,8 @@ class CoffeeMachine:
             self.message = ""
 
     def serve(self):
+        self.status = "serve"
         self.size = 0
         self.density = 0
-        self.status = "serve"
         self.message = ""
+

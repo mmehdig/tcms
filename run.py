@@ -45,10 +45,27 @@ def update(size, density):
     return coffee_machine()
 
 
+@app.route("/cm/size/<size>")
+def update_size(size):
+    cm.set_size(size)
+    data_file = open('coffee_machine.json', 'w')
+    data_file.write(json.dumps(cm.__dict__))
+    return coffee_machine()
+
+
+@app.route("/cm/density/<density>")
+def update_density(density):
+    cm.set_density(density)
+    data_file = open('coffee_machine.json', 'w')
+    data_file.write(json.dumps(cm.__dict__))
+    return coffee_machine()
+
+
 @app.route("/cm/click/size")
 def click_size():
     # send message to DM: user asked for next size!
     return next_size()
+
 
 @app.route("/cm/size")
 def next_size():
