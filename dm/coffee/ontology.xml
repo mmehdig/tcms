@@ -1,0 +1,44 @@
+<ontology name="CoffeeOntology">
+  <sort name="size"/>
+  <individual name="big" sort="size"/>
+  <individual name="bigger" sort="size"/>
+  <individual name="small" sort="size"/>
+  <individual name="smaller" sort="size"/>
+  <individual name="medium" sort="size"/>
+
+  <sort name="density"/>
+  <individual name="mild" sort="density"/>
+  <individual name="dark" sort="density"/>
+  <individual name="darker" sort="density"/>
+  <individual name="light" sort="density"/>
+  <individual name="lighter" sort="density"/>
+
+  <sort name="coffee"/>
+  <individual name="espresso" sort="coffee"/>
+  <individual name="americano" sort="coffee"/>
+  <individual name="coffee" sort="coffee"/>
+  <individual name="buttons" sort="coffee"/>
+
+  <sort name="product"/>
+  <individual name="p11" sort="product"/>
+  <individual name="p21" sort="product"/>
+  <individual name="p31" sort="product"/>
+  <individual name="p12" sort="product"/>
+  <individual name="p22" sort="product"/>
+  <individual name="p32" sort="product"/>
+  <individual name="p13" sort="product"/>
+  <individual name="p23" sort="product"/>
+  <individual name="p33" sort="product"/>
+
+  <predicate name="coffee_to_select" sort="coffee" feature_of="what_to_serve"/>
+  <predicate name="size_to_select" sort="size" feature_of="what_to_serve"/>
+  <predicate name="density_to_select" sort="density" feature_of="what_to_serve"/>
+  
+  <predicate name="what_to_serve" sort="product" />
+
+  <action name="order"/>
+  <action name="modify"/>
+  <action name="reset"/>
+  <action name="change_size"/>
+  <action name="change_density"/>
+</ontology>

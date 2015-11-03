@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar>
+  <!-- phrase based coffee selection -->
+  <question speaker="all" predicate="what_to_serve" type="wh_question">what do you want</question>
+  <question speaker="all" predicate="coffee_to_select" type="wh_question">which coffee</question>
+  <question speaker="system" predicate="size_to_select" type="wh_question">what size</question> 
+  <question speaker="system" predicate="density_to_select" type="wh_question">what density</question> 
+
+  <answer speaker="user">
+    <one-of>
+      <item><slot predicate="size_to_select" type="individual"/> <slot predicate="coffee_to_select" type="individual"/></item>
+      <item><slot predicate="density_to_select" type="individual"/> <slot predicate="coffee_to_select" type="individual"/></item>
+      <item><slot predicate="size_to_select" type="individual"/> and <slot predicate="density_to_select" type="individual"/></item>
+      <item><slot predicate="size_to_select" type="individual"/> and <slot predicate="density_to_select" type="individual"/> <slot predicate="coffee_to_select" type="individual"/></item>
+      <item><slot predicate="density_to_select" type="individual"/> and <slot predicate="size_to_select" type="individual"/></item>
+      <item><slot predicate="density_to_select" type="individual"/> and <slot predicate="size_to_select" type="individual"/> <slot predicate="coffee_to_select" type="individual"/></item>
+      <item><slot predicate="size_to_select" type="individual"/> <slot predicate="density_to_select" type="individual"/></item>
+      <item><slot predicate="size_to_select" type="individual"/> <slot predicate="density_to_select" type="individual"/> <slot predicate="coffee_to_select" type="individual"/></item>
+      <item><slot predicate="density_to_select" type="individual"/> <slot predicate="size_to_select" type="individual"/></item>
+      <item><slot predicate="density_to_select" type="individual"/> <slot predicate="size_to_select" type="individual"/> <slot predicate="coffee_to_select" type="individual"/></item>
+    </one-of>
+  </answer>
+
+  <!-- <action name="confirm_serve"><np><indefinite>proceed to serve</indefinite></np></action> -->
+  
+
+  <action name="top">
+    <np><indefinite>start view</indefinite></np>
+  </action>
+
+  <action name="up">back</action> 
+  <action name="modify">modify</action> 
+  <action name="reset">reset</action> 
+  <action name="order">
+    <one-of>
+      <item>order</item>
+      <item>serve</item>
+    </one-of>
+  </action>
+  
+  <action name="change_size">
+    <one-of>
+      <item>change size</item>
+      <item>size</item>
+    </one-of>
+  </action> 
+  <action name="change_density">
+    <one-of>
+      <item>change density</item>
+      <item>density</item>
+    </one-of>
+  </action> 
+
+  <preconfirm action="Serve">be served</preconfirm>
+  <report action="Serve" status="ended">here you are : <slot predicate="what_to_serve" type="individual"/> coffee</report>
+
+  <!-- default actions -->
+  <action name="top"><np><indefinite>start view</indefinite></np></action>
+  <action name="up">back</action> 
+
+  <individual name="coffee">coffee</individual>
+  <individual name="espresso">espresso</individual>
+  <individual name="americano">
+    <one-of>
+      <item>americano</item>
+      <item>cafe americano</item>
+    </one-of>
+  </individual>
+  <individual name="buttons">
+    <one-of>
+      <item>buttons</item>
+      <item>this</item>
+      <item>this coffee</item>
+    </one-of>
+  </individual>
+
+  <individual name="big">big</individual>
+  <individual name="medium">medium</individual>
+  <individual name="bigger">bigger</individual>
+  <individual name="small">small</individual>
+  <individual name="smaller">smaller</individual>
+
+  <individual name="dark">
+    <one-of>
+      <item>dark</item>
+      <item>strong</item>
+    </one-of>
+  </individual>
+  <individual name="darker">
+    <one-of>
+      <item>darker</item>
+      <item>stronger</item>
+    </one-of>
+  </individual>
+  <individual name="light">light</individual>
+  <individual name="mild">mild</individual>
+  <individual name="lighter">lighter</individual>
+
+  <individual name="p11">small light</individual>
+  <individual name="p21">medium light</individual>
+  <individual name="p31">big light</individual>
+  <individual name="p12">small mild</individual>
+  <individual name="p22">medium mild</individual>
+  <individual name="p32">big mild</individual>
+  <individual name="p13">small dark</individual>
+  <individual name="p23">medium dark</individual>
+  <individual name="p33">big dark</individual>
+
+
+</grammar>
+

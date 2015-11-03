@@ -1,0 +1,84 @@
+<domain name="CoffeeDomain" is_super_domain="true">
+  <goal type="perform" action="top">
+    <plan>
+      <forget_all/>
+      <dev_perform action="Reset" device="CoffeeDevice"/>
+      <findout type="alt_question">
+          <alt>
+            <perform action="order" />
+          </alt>
+      </findout>
+    </plan>
+  </goal>
+
+  <goal type="perform" action="order">
+    <plan>
+      <dev_perform action="TurnOn" device="CoffeeDevice"/>
+      <findout type="wh_question" predicate="what_to_serve" />
+      <dev_perform action="Serve" device="CoffeeDevice" postconfirm="true" preconfirm="interrogative"/> 
+    </plan>
+    <postcond>
+      <device_activity_terminated action="Serve"/>
+    </postcond>
+    <postplan>
+      <forget_all/>
+    </postplan>
+  </goal>
+
+  <goal type="perform" action="change_size">
+    <plan>
+      <forget predicate="size_to_select" />
+      <findout type="wh_question" predicate="size_to_select" />
+      <dev_perform action="ChangeSize" device="CoffeeDevice"/> 
+    </plan>
+    <postcond>
+      <device_activity_terminated action="ChangeSize"/>
+    </postcond>
+    <postplan>
+      <dev_perform action="Serve" device="CoffeeDevice" postconfirm="true" preconfirm="interrogative"/> 
+    </postplan>
+  </goal>
+
+  <goal type="perform" action="change_density">
+    <plan>
+      <forget predicate="density_to_select" />
+      <findout type="wh_question" predicate="density_to_select" />
+      <dev_perform action="ChangeDensity" device="CoffeeDevice"/> 
+    </plan>
+    <postcond>
+      <device_activity_terminated action="ChangeDensity"/>
+    </postcond>
+    <postplan>
+      <dev_perform action="Serve" device="CoffeeDevice" postconfirm="true" preconfirm="interrogative"/> 
+    </postplan>
+  </goal>
+
+
+  <goal type="perform" action="modify" restart_on_completion="false">
+    <plan>
+      <findout type="alt_question">
+          <alt>
+            <perform action="change_size" />
+          </alt>
+          <alt>
+            <perform action="change_density" />
+          </alt>
+      </findout>  
+    </plan>
+    <postcond>
+      <device_activity_terminated action="Serve"/>
+    </postcond>
+    <postplan>
+      <forget_all/>
+    </postplan>
+  </goal>
+
+  <goal type="perform" action="reset">
+    <plan>
+      <forget_all />
+      <dev_perform action="Reset" device="CoffeeDevice"/> 
+    </plan>
+  </goal>
+
+
+</domain>
