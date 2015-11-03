@@ -21,8 +21,15 @@ It will retrun the functioning machine user interface.
 `/cm`
 
 It will respond the coffe machine status in JSON format such as:
-`{"_valid_size": [1, 2, 3], "density": 3, "_valid_density": [1, 2, 3], "size": 1, "status": "ready"}`
-
+```
+  {
+    "_valid_size": [1, 2, 3],
+    "density": 3,
+    "_valid_density": [1, 2, 3],
+    "size": 1,
+    "status": "ready"
+  }
+```
 
 #### Set the size and density at the same time
 `/cm/<size>/<density>`
