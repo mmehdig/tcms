@@ -21,21 +21,32 @@ It will retrun the functioning machine user interface.
 `/cm`
 
 It will respond the coffe machine status in JSON format such as:
-`{"_valid_size": [1, 2, 3], "density": 3, "_valid_density": [1, 2, 3], "size": 1}`
+`{"_valid_size": [1, 2, 3], "density": 3, "_valid_density": [1, 2, 3], "size": 1, "status": "ready"}`
 
 
 #### Set the size and density at the same time
 `/cm/<size>/<density>`
 
+#### Set the size 
+`/cm/size/<size>`
 
-#### Send push button action as next size (loop through sizes):
+#### Set the density
+`/cm/density/<density>`
+
+#### The 'push button action' as next size (loop through sizes):
 `/cm/size`
 
-#### Send push button action as next density (loop through density):
+#### The 'push button action' as next density (loop through density):
 `/cm/density`
+
+#### Turn on action:
+`/cm/turn_on`
+It resets all parameters then it sets `status` to `ready`.
 
 #### Reset action:
 `/cm/reset`
+It resets all parameters then it sets `status` to `standby`.
 
 #### Serve action:
 `/cm/serve`
+It sets `status` to `serve` then it resets all parameters.
